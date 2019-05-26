@@ -27,9 +27,11 @@ public class ApiTest extends BasicActions{
 	}
 	@BeforeClass
 	public static void CheckAvailability() {
+	    System.err.close();
+	    System.setErr(System.out);
 		Response response = RestAssured.given().log().method().log().uri()
 	            .when().redirects().follow(false).head(Config.baseUrl);
 		response.then().log().status();
-		Assert.assertEquals("Код ответа не 200", 200, response.getStatusCode());
+		Assert.assertEquals("Код ответа не 200", 200, response.getStatusCode());		
 	}
 }
