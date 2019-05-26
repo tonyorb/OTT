@@ -2,6 +2,7 @@ package ru.gorbunov;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import io.restassured.RestAssured;
@@ -24,7 +25,7 @@ public class ApiTest extends BasicActions{
 	    System.err.close();
 	    System.setErr(System.out);
 	}
-	@Before
+	@BeforeClass
 	public void CheckAvailability() {
 		Response response = RestAssured.given().log().method().log().uri()
 	            .when().redirects().follow(false).head(Config.baseUrl);
