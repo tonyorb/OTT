@@ -26,7 +26,7 @@ public class ApiTest extends BasicActions{
 	    System.setErr(System.out);
 	}
 	@BeforeClass
-	public void CheckAvailability() {
+	public static void CheckAvailability() {
 		Response response = RestAssured.given().log().method().log().uri()
 	            .when().redirects().follow(false).head(Config.baseUrl);
 		response.then().log().status();
